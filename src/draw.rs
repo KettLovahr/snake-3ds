@@ -1,4 +1,4 @@
-use crate::Color;
+use crate::{util::distance_squared, Color};
 use ctru::services::gfx::RawFrameBuffer;
 
 pub fn draw_rectangle(
@@ -12,6 +12,16 @@ pub fn draw_rectangle(
     for cx in x..x+w {
         for cy in y..y+h {
             draw_pixel(fb, cx, cy, color);
+        }
+    }
+}
+
+pub fn draw_circle(fb: &RawFrameBuffer, x: isize, y: isize, r: isize, color: Color) {
+    for cx in x-r..=x+r {
+        for cy in y-r..=y+r {
+            if distance_squared(cx, cy, x, y) < r*r {
+                draw_pixel(fb, cx, cy, color);
+            }
         }
     }
 }

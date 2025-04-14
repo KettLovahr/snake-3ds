@@ -1,6 +1,6 @@
 use ctru::{prelude::KeyPad, services::gfx::RawFrameBuffer};
 use rand::random;
-use crate::{color, draw::draw_rectangle};
+use crate::{color, draw::draw_rectangle, draw::draw_circle};
 
 static DEFAULT_WORLD: World = World{
         width: 40,
@@ -283,12 +283,11 @@ impl Snake {
             }
         });
 
-        draw_rectangle(
+        draw_circle(
             fb,
-            world.food.x * world.scale,
-            world.food.y * world.scale,
-            world.scale,
-            world.scale,
+            world.food.x * world.scale + world.scale / 2,
+            world.food.y * world.scale + world.scale / 2,
+            world.scale / 2,
             color::ORANGE,
         );
 

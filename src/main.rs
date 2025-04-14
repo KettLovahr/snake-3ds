@@ -8,6 +8,7 @@ use snake::Game;
 mod snake;
 mod draw;
 mod color;
+mod util;
 
 fn main() {
     let apt: Apt = Apt::new().unwrap();
@@ -32,6 +33,7 @@ fn main() {
             draw_rectangle(buffer, 0, 0, 400, 240, color::BLACK);
             game.draw(buffer);
         }
+
 
         hid.scan_input();
 
