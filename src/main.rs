@@ -1,12 +1,12 @@
 #![feature(allocator_api)]
 
 use ctru::{prelude::*, services::gfx::{Screen, Swap, TopScreen3D}};
-use kett_draw_handle::draw_rectangle;
+use draw::draw_rectangle;
 use color::Color;
 use snake::Game;
 
 mod snake;
-mod kett_draw_handle;
+mod draw;
 mod color;
 
 fn main() {

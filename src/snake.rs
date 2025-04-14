@@ -1,6 +1,6 @@
 use ctru::{prelude::KeyPad, services::gfx::RawFrameBuffer};
 use rand::random;
-use crate::{color, kett_draw_handle::draw_rectangle};
+use crate::{color, draw::draw_rectangle};
 
 static DEFAULT_WORLD: World = World{
         width: 40,
