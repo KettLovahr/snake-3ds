@@ -27,11 +27,17 @@ pub fn draw_circle(fb: &RawFrameBuffer, x: isize, y: isize, r: isize, color: Col
 }
 
 pub fn draw_pixel(fb: &RawFrameBuffer, x: isize, y: isize, color: Color) {
-    if x < 0 || x > 400 || y < 0 || y > 240 {
+    // The screens are rotated 90 degrees, so the width and height of the
+    // framebuffer do not match up with the expectation. I'm switching
+    // them around here so these terms match up with expectations.
+    let height: isize = fb.width as isize;
+    let width: isize = fb.height as isize;
+
+    if x < 0 || x > width || y < 0 || y > height {
         return;
     }
 
-    let offset: isize = (y * 3) + (x * 240 * 3);
+    let offset: isize = (y * 3) + (x * height * 3);
     unsafe {
         *(fb.ptr.offset(offset + 0)) = color.b;
         *(fb.ptr.offset(offset + 1)) = color.g;
