@@ -143,7 +143,7 @@ impl Snake {
                         match self.direction {
                             Direction::Up => Position {
                                 x: val.x,
-                                y: emod(val.y + 1, world.height),
+                                y: emod(val.y - 1, world.height),
                             },
                             Direction::Right => Position {
                                 x: emod(val.x + 1, world.width),
@@ -151,7 +151,7 @@ impl Snake {
                             },
                             Direction::Down => Position {
                                 x: val.x,
-                                y: emod(val.y - 1, world.height),
+                                y: emod(val.y + 1, world.height),
                             },
                             Direction::Left => Position {
                                 x: emod(val.x - 1, world.width),
